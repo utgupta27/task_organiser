@@ -13,6 +13,7 @@ class TodoAndNotesApp extends StatelessWidget {
     return MaterialApp(
       title: "To-Do & Notes App",
       home: HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_organiser/todoPage.dart';
 
 class AddNewTaskPage extends StatefulWidget {
   const AddNewTaskPage({Key? key}) : super(key: key);
@@ -9,6 +10,15 @@ class AddNewTaskPage extends StatefulWidget {
 
 class _AddNewTaskPageState extends State<AddNewTaskPage> {
   var dropdownValue = "Normal";
+
+  var title;
+  var subTitle;
+  var priority;
+  var dueDate;
+
+  var titleController = TextEditingController();
+  var subTitleController = TextEditingController();
+  var dueDateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +36,15 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
             tooltip: 'New Task',
             onPressed: () {
               // handle the press
+              title = titleController.value.text;
+              subTitle = subTitleController.value.text;
+              dueDate = dueDateController.value.text;
+              TodoPageState.newTaskData(title, subTitle, priority, dueDate);
+              setState(() {
+                super.setState(() {});
+              });
+              Navigator.pop(context, true);
+              setState(() {});
             },
           ),
         ],
@@ -42,7 +61,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                 keyboardType: TextInputType.text,
                 // autofocus: true,
                 textInputAction: TextInputAction.next,
-                // controller: heightController,
+                controller: titleController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -65,7 +84,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
 
                 textInputAction: TextInputAction.newline,
                 maxLines: 3,
-                // controller: heightController,
+                controller: subTitleController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -87,7 +106,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                 keyboardType: TextInputType.datetime,
                 // autofocus: true,
                 textInputAction: TextInputAction.next,
-                // controller: heightController,
+                controller: dueDateController,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -142,6 +161,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                         onChanged: (String? newValue) {
                           setState(() {
                             dropdownValue = newValue!;
+                            priority = dropdownValue;
                           });
                         },
                         items: <String>['High', 'Normal', 'Low']
