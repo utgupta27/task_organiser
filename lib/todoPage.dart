@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:task_organiser/addNewTaskPage.dart';
 import 'package:task_organiser/dbHandler.dart';
 import 'package:task_organiser/dataModle.dart';
+import 'package:task_organiser/viewTask.dart';
 
 class TodoPage extends StatefulWidget {
   // const TodoPage({Key? key}) : super(key: key);
@@ -54,7 +55,10 @@ class TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    // print(TodoPage.tempData);
+    String s = json.encode(TodoPage.tempData);
+    print(TodoPage.tempData);
+    print(s);
+    print(json.decode(s));
     update();
     return Scaffold(
       body: Container(
@@ -69,7 +73,7 @@ class TodoPageState extends State<TodoPage> {
               itemBuilder: (context, index) {
                 return Container(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                  height: 105,
+                  height: 110,
                   width: double.maxFinite,
                   child: Card(
                     elevation: 4,
@@ -79,19 +83,56 @@ class TodoPageState extends State<TodoPage> {
                           border: Border(
                               left: BorderSide(
                                   width: 7.0, color: getColor(index)))),
-                      child: ListTile(
-                        // leading: Icon(Icons.arrow_right_rounded),
-                        minLeadingWidth: 5,
-                        title: Text(TodoPage.tempData[index][0]),
-                        subtitle: Text(TodoPage.tempData[index][1]),
-                        trailing: ElevatedButton(
-                          child: Icon(Icons.done_outline_rounded),
-                          style:
-                              ElevatedButton.styleFrom(primary: Colors.green),
-                          onPressed: () {
-                            onButtonPressed(index);
-                          },
-                        ),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            // leading: Icon(Icons.arrow_right_rounded),
+                            onTap: () {
+                              // Call A function
+                              ViewTask.sendData(
+                                  TodoPage.tempData[index][0],
+                                  TodoPage.tempData[index][1],
+                                  TodoPage.tempData[index][2],
+                                  TodoPage.tempData[index][3],
+                                  TodoPage.tempData[index][4]);
+
+                              setState(() {
+                                super.setState(() {});
+                              });
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (_) => new ViewTask()),
+                              );
+                            },
+                            minLeadingWidth: 5,
+                            title: Text(
+                              TodoPage.tempData[index][0],
+                              style: TextStyle(fontWeight: FontWeight.w900),
+                            ),
+                            subtitle: Text(TodoPage.tempData[index][1]),
+                            trailing: Container(
+                              child: ElevatedButton(
+                                child: Icon(Icons.done_outline_rounded),
+                                style: ElevatedButton.styleFrom(
+                                    primary: Colors.green),
+                                onPressed: () {
+                                  onButtonPressed(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(17, 0, 0, 0),
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                "Due: ${TodoPage.tempData[index][3]}",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

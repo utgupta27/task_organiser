@@ -20,6 +20,32 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
   var subTitleController = TextEditingController();
   var dueDateController = TextEditingController();
 
+  DateTime _date = DateTime(2020, 11, 17);
+
+  void _selectDate() async {
+    final DateTime? newDate = await showDatePicker(
+      context: context,
+      initialDate: _date,
+      firstDate: DateTime(2017, 1),
+      lastDate: DateTime(2022, 7),
+      helpText: 'Select a date',
+    );
+    if (newDate != null) {
+      setState(() {
+        _date = newDate;
+      });
+    }
+  }
+
+  Color? getColor(value) {
+    if (value == "High") {
+      return Colors.red;
+    } else if (value == "Low") {
+      return Colors.yellow[800];
+    } else
+      return Colors.green;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +65,8 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               title = titleController.value.text;
               subTitle = subTitleController.value.text;
               dueDate = dueDateController.value.text;
-              TodoPageState.newTaskData(title, subTitle, priority, dueDate);
+              TodoPageState.newTaskData(
+                  title, subTitle, priority, _date.toString().substring(0, 10));
               setState(() {
                 super.setState(() {});
               });
@@ -100,41 +127,20 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(8, 20, 20, 20),
-              child: TextField(
-                keyboardType: TextInputType.datetime,
-                // autofocus: true,
-                textInputAction: TextInputAction.next,
-                controller: dueDateController,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                decoration: InputDecoration(
-                  focusColor: Colors.black87,
-                  icon: Icon(Icons.date_range_outlined, size: 40),
-                  labelText: "Due Date",
-                  labelStyle: TextStyle(
-                      // color: Colors.red,
-                      ),
-                  hintText: 'e.g, 152',
-                ),
-              ),
-            ),
             Column(
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                   child: ListTile(
-                    leading: Icon(
-                      Icons.priority_high_rounded,
-                      size: 40,
-                      color: Colors.red,
-                    ),
+                    // leading: Icon(
+                    //   Icons.priority_high_rounded,
+                    //   size: 35,
+                    //   color: Colors.red,
+                    // ),
                     title: Text(
-                      "Task Priority",
+                      "Select Task Priority",
                       style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey[600]),
                     ),
@@ -172,14 +178,31 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                               child: Text(
                                 value,
                                 style: TextStyle(
-                                  // color: getColor(value),
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                    color: getColor(value),
+                                    // backgroundColor: getColor(value),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 28),
                               ),
                             ),
                           );
                         }).toList(),
                       )),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(8, 20, 20, 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _selectDate,
+                        child: Text('SELECT DATE'),
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Selected DATE: ' + _date.toString().substring(0, 10),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
