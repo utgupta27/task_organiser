@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/bottomNavigationBar.dart';
-import 'package:task_organiser/todoPage.dart';
-import 'package:task_organiser/notesPage.dart';
-import 'package:task_organiser/reminderPage.dart';
-import 'package:task_organiser/drawer.dart';
+import 'package:task_organiser/navigationBar/bottomNavigationBar.dart';
+import 'package:task_organiser/todoPage/todoPage.dart';
+import 'package:task_organiser/notesPage/notesPage.dart';
+import 'package:task_organiser/reminderPage/reminderPage.dart';
+import 'package:task_organiser/drawer/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

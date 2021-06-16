@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/homePage.dart';
+import 'package:task_organiser/homePage/homePage.dart';
 
 void main(List<String> args) {
   runApp(TodoAndNotesApp());
