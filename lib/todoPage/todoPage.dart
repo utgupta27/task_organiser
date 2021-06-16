@@ -62,6 +62,14 @@ class TodoPageState extends State<TodoPage> {
     setState(() {});
   }
 
+  getSubtitle(var data) {
+    if (data.length < 60) {
+      return data;
+    } else if (data.length >= 60) {
+      return data.substring(0, 58) + "...";
+    }
+  }
+
   onButtonPressed(index) async {
     print("Button $index pressed");
     int i = int.parse(todos[index].id.toString());
@@ -82,9 +90,11 @@ class TodoPageState extends State<TodoPage> {
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : todos.isEmpty
-              ? Text(
-                  'No Notes',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
+              ? Center(
+                  child: Text(
+                    "Nothing to Show",
+                    style: TextStyle(color: Colors.black, fontSize: 24),
+                  ),
                 )
               : Container(
                   child: Column(
@@ -137,7 +147,8 @@ class TodoPageState extends State<TodoPage> {
                                         style: TextStyle(
                                             fontWeight: FontWeight.w900),
                                       ),
-                                      subtitle: Text(todos[index].subtitle),
+                                      subtitle: Text(
+                                          getSubtitle(todos[index].subtitle)),
                                       trailing: Container(
                                         child: ElevatedButton(
                                           child:
@@ -193,217 +204,217 @@ class TodoPageState extends State<TodoPage> {
   }
 }
 
-class AddNewTaskPage extends StatefulWidget {
-  const AddNewTaskPage({Key? key}) : super(key: key);
+// class AddNewTaskPage extends StatefulWidget {
+//   const AddNewTaskPage({Key? key}) : super(key: key);
 
-  @override
-  _AddNewTaskPageState createState() => _AddNewTaskPageState();
-}
+//   @override
+//   _AddNewTaskPageState createState() => _AddNewTaskPageState();
+// }
 
-class _AddNewTaskPageState extends State<AddNewTaskPage> {
-  var dropdownValue = "Normal";
+// class _AddNewTaskPageState extends State<AddNewTaskPage> {
+//   var dropdownValue = "Normal";
 
-  var title;
-  var subTitle;
-  var priority;
-  var dueDate;
+//   var title;
+//   var subTitle;
+//   var priority;
+//   var dueDate;
 
-  var titleController = TextEditingController();
-  var subTitleController = TextEditingController();
-  var dueDateController = TextEditingController();
+//   var titleController = TextEditingController();
+//   var subTitleController = TextEditingController();
+//   var dueDateController = TextEditingController();
 
-  DateTime _date = DateTime(2020, 11, 17);
+//   DateTime _date = DateTime(2020, 11, 17);
 
-  void _selectDate() async {
-    final DateTime? newDate = await showDatePicker(
-      context: context,
-      initialDate: _date,
-      firstDate: DateTime(2017, 1),
-      lastDate: DateTime(2022, 7),
-      helpText: 'Select a date',
-    );
-    if (newDate != null) {
-      setState(() {
-        _date = newDate;
-      });
-    }
-  }
+//   void _selectDate() async {
+//     final DateTime? newDate = await showDatePicker(
+//       context: context,
+//       initialDate: _date,
+//       firstDate: DateTime(2017, 1),
+//       lastDate: DateTime(2022, 7),
+//       helpText: 'Select a date',
+//     );
+//     if (newDate != null) {
+//       setState(() {
+//         _date = newDate;
+//       });
+//     }
+//   }
 
-  Color? getColor(value) {
-    if (value == "High") {
-      return Colors.red;
-    } else if (value == "Low") {
-      return Colors.yellow[800];
-    } else
-      return Colors.green;
-  }
+//   Color? getColor(value) {
+//     if (value == "High") {
+//       return Colors.red;
+//     } else if (value == "Low") {
+//       return Colors.yellow[800];
+//     } else
+//       return Colors.green;
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Add New Task"),
-        centerTitle: true,
-        backgroundColor: Colors.blue[800],
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.add_task_rounded,
-              size: 35,
-            ),
-            tooltip: 'New Task',
-            onPressed: () {
-              // handle the press
-              title = titleController.value.text;
-              subTitle = subTitleController.value.text;
-              dueDate = dueDateController.value.text;
-              newTaskData(
-                  title, subTitle, priority, _date.toString().substring(0, 10));
-              setState(() {
-                super.setState(() {});
-              });
-              Navigator.pop(context, true);
-              setState(() {
-                super.setState(() {});
-              });
-              // TodoPageState.refresh();
-            },
-          ),
-        ],
-      ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        // color: Colors.deepOrange,
-        child: ListView(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
-              child: TextField(
-                keyboardType: TextInputType.text,
-                // autofocus: true,
-                textInputAction: TextInputAction.next,
-                controller: titleController,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                decoration: InputDecoration(
-                  focusColor: Colors.black87,
-                  icon: Icon(Icons.task, size: 40),
-                  labelText: "Task Name ",
-                  labelStyle: TextStyle(
-                      // color: Colors.red,
-                      ),
-                  hintText: 'e.g, List of Groceries',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
-              child: TextField(
-                keyboardType: TextInputType.multiline,
-                // autofocus: true,
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Add New Task"),
+//         centerTitle: true,
+//         backgroundColor: Colors.blue[800],
+//         actions: <Widget>[
+//           IconButton(
+//             icon: const Icon(
+//               Icons.add_task_rounded,
+//               size: 35,
+//             ),
+//             tooltip: 'New Task',
+//             onPressed: () {
+//               // handle the press
+//               title = titleController.value.text;
+//               subTitle = subTitleController.value.text;
+//               dueDate = dueDateController.value.text;
+//               newTaskData(
+//                   title, subTitle, priority, _date.toString().substring(0, 10));
+//               setState(() {
+//                 super.setState(() {});
+//               });
+//               Navigator.pop(context, true);
+//               setState(() {
+//                 super.setState(() {});
+//               });
+//               // TodoPageState.refresh();
+//             },
+//           ),
+//         ],
+//       ),
+//       body: Container(
+//         width: MediaQuery.of(context).size.width,
+//         height: MediaQuery.of(context).size.height,
+//         // color: Colors.deepOrange,
+//         child: ListView(
+//           children: <Widget>[
+//             Padding(
+//               padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
+//               child: TextField(
+//                 keyboardType: TextInputType.text,
+//                 // autofocus: true,
+//                 textInputAction: TextInputAction.next,
+//                 controller: titleController,
+//                 style: TextStyle(
+//                   fontWeight: FontWeight.bold,
+//                 ),
+//                 decoration: InputDecoration(
+//                   focusColor: Colors.black87,
+//                   icon: Icon(Icons.task, size: 40),
+//                   labelText: "Task Name ",
+//                   labelStyle: TextStyle(
+//                       // color: Colors.red,
+//                       ),
+//                   hintText: 'e.g, List of Groceries',
+//                 ),
+//               ),
+//             ),
+//             Padding(
+//               padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
+//               child: TextField(
+//                 keyboardType: TextInputType.multiline,
+//                 // autofocus: true,
 
-                textInputAction: TextInputAction.newline,
-                maxLines: 3,
-                controller: subTitleController,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-                decoration: InputDecoration(
-                  focusColor: Colors.black87,
-                  icon: Icon(Icons.subtitles_outlined, size: 40),
-                  labelText: "Details",
-                  labelStyle: TextStyle(
-                      // color: Colors.red,
-                      ),
-                  hintText:
-                      'e.g, Soap,Potato Chips,\nCooking Oil,Whole Wheat Flour,\nCorn Flour, Etc.',
-                ),
-              ),
-            ),
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
-                  child: ListTile(
-                    // leading: Icon(
-                    //   Icons.priority_high_rounded,
-                    //   size: 35,
-                    //   color: Colors.red,
-                    // ),
-                    title: Text(
-                      "Select Task Priority",
-                      style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[600]),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 65,
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                      child: DropdownButton<String>(
-                        value: dropdownValue,
-                        isExpanded: true,
+//                 textInputAction: TextInputAction.newline,
+//                 maxLines: 3,
+//                 controller: subTitleController,
+//                 style: TextStyle(
+//                   fontWeight: FontWeight.bold,
+//                 ),
+//                 decoration: InputDecoration(
+//                   focusColor: Colors.black87,
+//                   icon: Icon(Icons.subtitles_outlined, size: 40),
+//                   labelText: "Details",
+//                   labelStyle: TextStyle(
+//                       // color: Colors.red,
+//                       ),
+//                   hintText:
+//                       'e.g, Soap,Potato Chips,\nCooking Oil,Whole Wheat Flour,\nCorn Flour, Etc.',
+//                 ),
+//               ),
+//             ),
+//             Column(
+//               children: <Widget>[
+//                 Padding(
+//                   padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
+//                   child: ListTile(
+//                     // leading: Icon(
+//                     //   Icons.priority_high_rounded,
+//                     //   size: 35,
+//                     //   color: Colors.red,
+//                     // ),
+//                     title: Text(
+//                       "Select Task Priority",
+//                       style: TextStyle(
+//                           fontSize: 28,
+//                           fontWeight: FontWeight.bold,
+//                           color: Colors.grey[600]),
+//                     ),
+//                   ),
+//                 ),
+//                 Container(
+//                   width: MediaQuery.of(context).size.width - 65,
+//                   child: Padding(
+//                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+//                       child: DropdownButton<String>(
+//                         value: dropdownValue,
+//                         isExpanded: true,
 
-                        // icon: const Icon(Icons.arrow_downward),
-                        // iconSize: 24,
-                        elevation: 16,
-                        style:
-                            const TextStyle(color: Colors.blue, fontSize: 18),
-                        underline: Container(
-                          height: 2,
-                          // width: MediaQuery.of(context).size.width,
-                          color: Colors.blue,
-                        ),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            dropdownValue = newValue!;
-                            priority = dropdownValue;
-                          });
-                        },
-                        items: <String>['High', 'Normal', 'Low']
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Center(
-                              child: Text(
-                                value,
-                                style: TextStyle(
-                                    color: getColor(value),
-                                    // backgroundColor: getColor(value),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28),
-                              ),
-                            ),
-                          );
-                        }).toList(),
-                      )),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(8, 20, 20, 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: _selectDate,
-                        child: Text('SELECT DATE'),
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        'Selected DATE: ' + _date.toString().substring(0, 10),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//                         // icon: const Icon(Icons.arrow_downward),
+//                         // iconSize: 24,
+//                         elevation: 16,
+//                         style:
+//                             const TextStyle(color: Colors.blue, fontSize: 18),
+//                         underline: Container(
+//                           height: 2,
+//                           // width: MediaQuery.of(context).size.width,
+//                           color: Colors.blue,
+//                         ),
+//                         onChanged: (String? newValue) {
+//                           setState(() {
+//                             dropdownValue = newValue!;
+//                             priority = dropdownValue;
+//                           });
+//                         },
+//                         items: <String>['High', 'Normal', 'Low']
+//                             .map<DropdownMenuItem<String>>((String value) {
+//                           return DropdownMenuItem<String>(
+//                             value: value,
+//                             child: Center(
+//                               child: Text(
+//                                 value,
+//                                 style: TextStyle(
+//                                     color: getColor(value),
+//                                     // backgroundColor: getColor(value),
+//                                     fontWeight: FontWeight.bold,
+//                                     fontSize: 28),
+//                               ),
+//                             ),
+//                           );
+//                         }).toList(),
+//                       )),
+//                 ),
+//                 Padding(
+//                   padding: EdgeInsets.fromLTRB(8, 20, 20, 20),
+//                   child: Column(
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     children: [
+//                       ElevatedButton(
+//                         onPressed: _selectDate,
+//                         child: Text('SELECT DATE'),
+//                       ),
+//                       SizedBox(height: 8),
+//                       Text(
+//                         'Selected DATE: ' + _date.toString().substring(0, 10),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

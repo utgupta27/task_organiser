@@ -51,7 +51,7 @@ class _ViewTaskState extends State<ViewTask> {
                 "${ViewTask.title}",
                 style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 40,
+                    fontSize: 30,
                     color: getColor()),
               ),
               subtitle: Text("Title"),
@@ -66,20 +66,35 @@ class _ViewTaskState extends State<ViewTask> {
                       child: Text(
                         "Details: ",
                         style: TextStyle(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                            fontSize: 26, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
                   Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
-                      padding: const EdgeInsets.fromLTRB(80, 0, 30, 10),
+                      padding: const EdgeInsets.fromLTRB(50, 0, 20, 10),
                       child: Text(
                         ViewTask.subTitle,
-                        style: TextStyle(
-                          fontSize: 26,
-                        ),
+                        style: TextStyle(fontSize: 22, color: Colors.grey[600]),
                       ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              child: Column(
+                children: [
+                  ListTile(
+                    leading: Icon(
+                      Icons.timer,
+                      color: Colors.red,
+                      size: 35,
+                    ),
+                    title: Text(
+                      "Due: ${ViewTask.dueDate}",
+                      style: TextStyle(fontSize: 23),
                     ),
                   )
                 ],
