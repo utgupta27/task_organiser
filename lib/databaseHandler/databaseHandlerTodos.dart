@@ -2,10 +2,10 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:task_organiser/dataModle/todoDataModle.dart';
 
-class DatabaseHandler {
-  static final DatabaseHandler instance = DatabaseHandler._init();
+class DatabaseHandlerTodos {
+  static final DatabaseHandlerTodos instance = DatabaseHandlerTodos._init();
   static Database? _database;
-  DatabaseHandler._init();
+  DatabaseHandlerTodos._init();
 
   Future<Database> get database async {
     if (_database != null) {

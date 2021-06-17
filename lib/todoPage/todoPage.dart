@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:task_organiser/todoPage/addNewTaskPage.dart';
 import 'package:task_organiser/todoPage/viewTask.dart';
 import 'package:task_organiser/dataModle/todoDataModle.dart';
-import 'package:task_organiser/databaseHandler/databaseHandler.dart';
+import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
 
 newTaskData(title, subTitle, priority, dueDate) async {
   final newTodo = Todo(
@@ -11,7 +11,7 @@ newTaskData(title, subTitle, priority, dueDate) async {
       priority: priority,
       dueDate: dueDate,
       date: DateTime.now().toString());
-  await DatabaseHandler.instance.create(newTodo);
+  await DatabaseHandlerTodos.instance.create(newTodo);
 }
 
 refresh() {}
@@ -37,7 +37,7 @@ class TodoPageState extends State<TodoPage> {
     setState(() {
       isLoading = true;
     });
-    this.todos = await DatabaseHandler.instance.readAllTodos();
+    this.todos = await DatabaseHandlerTodos.instance.readAllTodos();
     setState(() {
       isLoading = false;
     });
@@ -77,7 +77,7 @@ class TodoPageState extends State<TodoPage> {
     int i = int.parse(todos[index].id.toString());
     print("INDEX $i");
     print('Before ${todos[index].id}');
-    await DatabaseHandler.instance.delete(i);
+    await DatabaseHandlerTodos.instance.delete(i);
     refreshTodos();
     setState(() {});
   }

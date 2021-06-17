@@ -38,19 +38,22 @@ class _HomePageState extends State<HomePage> {
                 Icons.task_alt,
                 size: 30,
               ),
-              title: Text("To-Do")),
+              title: Text(
+                "  To-Do Lists",
+                style: TextStyle(fontSize: 20),
+              )),
           BottomNavyBarItem(
               icon: Icon(
                 Icons.note_alt_outlined,
                 size: 30,
               ),
-              title: Text("Notes")),
-          BottomNavyBarItem(
-              icon: Icon(
-                Icons.alarm_on_outlined,
-                size: 30,
-              ),
-              title: Text("Reminders"))
+              title: Text("  My Notes", style: TextStyle(fontSize: 20))),
+          // BottomNavyBarItem(
+          //     icon: Icon(
+          //       Icons.alarm_on_outlined,
+          //       size: 30,
+          //     ),
+          //     title: Text("Reminders"))
         ],
         selectedIndex: _currentIndex,
         onItemSelected: onItemTapped,

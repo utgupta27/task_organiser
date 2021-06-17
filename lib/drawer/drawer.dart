@@ -25,7 +25,7 @@ class MyDrawer extends StatelessWidget {
               style: TextStyle(fontSize: 35),
             ),
             accountEmail: Text(
-                "Organise and keep track of your day-to\n-day Tasks,Notes & Reminders"),
+                "Organise and keep track of your day-to\n-day Tasks and Notes."),
             // currentAccountPicture: CircleAvatar(
             //   backgroundImage: AssetImage('assets/profile.png'),
             // ),

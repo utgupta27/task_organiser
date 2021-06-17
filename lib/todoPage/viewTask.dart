@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/databaseHandler/databaseHandler.dart';
+import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
 import "package:task_organiser/todoPage/editTodoPage.dart";
 
 class ViewTask extends StatefulWidget {
@@ -37,7 +37,7 @@ getTime() {
 class _ViewTaskState extends State<ViewTask> {
   onButtonPressed(index) async {
     print('INDEX to be deleted: $index');
-    await DatabaseHandler.instance.delete(index);
+    await DatabaseHandlerTodos.instance.delete(index);
     setState(() {
       super.setState(() {});
     });
@@ -58,7 +58,7 @@ class _ViewTaskState extends State<ViewTask> {
       appBar: AppBar(
         title: Text("View Your Task"),
         centerTitle: true,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: getColor(),
         actions: <Widget>[
           IconButton(
               onPressed: () {
