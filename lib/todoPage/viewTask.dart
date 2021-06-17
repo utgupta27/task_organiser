@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:task_organiser/dataModle/todoDataModle.dart';
+import 'package:task_organiser/databaseHandler/databaseHandler.dart';
+import 'package:task_organiser/todoPage/todoPage.dart';
 
 class ViewTask extends StatefulWidget {
   // const ViewTask({Key? key}) : super(key: key);
+  static var id;
   static var title;
   static var subTitle;
   static var priority;
   static var dueDate;
   static var date;
 
-  static sendData(atitle, asubTitle, apriority, adueDate, adate) {
+  static sendData(aid, atitle, asubTitle, apriority, adueDate, adate) {
+    id = aid;
     title = atitle;
     subTitle = asubTitle;
     priority = apriority;
@@ -31,6 +36,14 @@ getTime() {
 }
 
 class _ViewTaskState extends State<ViewTask> {
+  onButtonPressed(index) async {
+    print('INDEX to be deleted: $index');
+    await DatabaseHandler.instance.delete(index);
+    setState(() {
+      super.setState(() {});
+    });
+  }
+
   Color getColor() {
     if (ViewTask.priority == "High") {
       return Colors.red;
@@ -47,6 +60,31 @@ class _ViewTaskState extends State<ViewTask> {
         title: Text("View Your Task"),
         centerTitle: true,
         backgroundColor: Colors.blue[800],
+        actions: <Widget>[
+          IconButton(
+              onPressed: null,
+              icon: Icon(
+                Icons.edit,
+                size: 30,
+                color: Colors.white,
+              )),
+          IconButton(
+              onPressed: () {
+                onButtonPressed(int.parse(ViewTask.id.toString()));
+                setState(() {
+                  super.setState(() {});
+                });
+                Navigator.pop(context, true);
+                setState(() {
+                  super.setState(() {});
+                });
+              },
+              icon: Icon(
+                Icons.delete_forever,
+                size: 30,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: Container(
         child: Column(

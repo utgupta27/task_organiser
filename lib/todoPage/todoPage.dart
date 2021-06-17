@@ -14,6 +14,8 @@ newTaskData(title, subTitle, priority, dueDate) async {
   await DatabaseHandler.instance.create(newTodo);
 }
 
+refresh() {}
+
 class TodoPage extends StatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
 
@@ -76,16 +78,13 @@ class TodoPageState extends State<TodoPage> {
     print("INDEX $i");
     print('Before ${todos[index].id}');
     await DatabaseHandler.instance.delete(i);
-
     refreshTodos();
-    // print('After ${todos[index].id}');
     setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     update();
-    // refreshTodos();
     return Scaffold(
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -127,6 +126,7 @@ class TodoPageState extends State<TodoPage> {
                                       onTap: () {
                                         // Call A function
                                         ViewTask.sendData(
+                                            todos[index].id,
                                             todos[index].title,
                                             todos[index].subtitle,
                                             todos[index].priority,
@@ -136,10 +136,13 @@ class TodoPageState extends State<TodoPage> {
                                         setState(() {
                                           super.setState(() {});
                                         });
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (_) => new ViewTask()),
-                                        );
+                                        Navigator.of(context)
+                                            .push(
+                                              MaterialPageRoute(
+                                                  builder: (_) =>
+                                                      new ViewTask()),
+                                            )
+                                            .then(onGoBack);
                                       },
                                       minLeadingWidth: 5,
                                       title: Text(

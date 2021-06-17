@@ -37,15 +37,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
     }
   }
 
-  // checkIfEmpty() {
-  //   title = titleController.value.text;
-  //   subTitle = subTitleController.value.text;
-  //   dueDate = dueDateController.value.text;
-  //   if (title == '' || subTitle == '' || dueDate == '') {
-  //     return true;
-  //   }
-  // }
-
   Color? getColor(value) {
     if (value == "High") {
       return Colors.red;
@@ -83,7 +74,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               setState(() {
                 super.setState(() {});
               });
-              // TodoPageState.refresh();
             },
           ),
         ],
@@ -98,11 +88,9 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
               child: TextField(
                 keyboardType: TextInputType.text,
-                // autofocus: true,
                 textInputAction: TextInputAction.next,
                 controller: titleController,
                 autocorrect: true,
-                // enabled: checkIfEmpty() ?? false,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -110,9 +98,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                   focusColor: Colors.black87,
                   icon: Icon(Icons.task, size: 40),
                   labelText: "Task Name ",
-                  labelStyle: TextStyle(
-                      // color: Colors.red,
-                      ),
+                  labelStyle: TextStyle(),
                   hintText: 'e.g, List of Groceries',
                 ),
               ),
