@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/dataModle/todoDataModle.dart';
 import 'package:task_organiser/databaseHandler/databaseHandler.dart';
-import 'package:task_organiser/todoPage/todoPage.dart';
+import "package:task_organiser/todoPage/editTodoPage.dart";
 
 class ViewTask extends StatefulWidget {
   // const ViewTask({Key? key}) : super(key: key);
@@ -62,7 +61,18 @@ class _ViewTaskState extends State<ViewTask> {
         backgroundColor: Colors.blue[800],
         actions: <Widget>[
           IconButton(
-              onPressed: null,
+              onPressed: () {
+                EditTodoPageState.sendData(
+                    ViewTask.id,
+                    ViewTask.title,
+                    ViewTask.subTitle,
+                    ViewTask.priority,
+                    ViewTask.dueDate,
+                    ViewTask.date);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => new EditTodoPage()),
+                );
+              },
               icon: Icon(
                 Icons.edit,
                 size: 30,
