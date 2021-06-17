@@ -1,7 +1,7 @@
 # task-organiser
 A Beautiful Application for organising To-Do Tasks, Notes and Reminders.
 
-## SnapShots
+<!-- ## SnapShots
 <table>
   <tr>
     <td>Todo: Main Page</td>
@@ -15,5 +15,5 @@ A Beautiful Application for organising To-Do Tasks, Notes and Reminders.
     <td><img src="https://github.com/utgupta27/task_organiser/blob/master/assets/screenshots/Screenshot_1623916356.png" width=270 height=480></td>
     <td><img src="https://github.com/utgupta27/task_organiser/blob/master/assets/screenshots/Screenshot_1623916345.png" width=270 height=480></td>
   </tr>
- </table>
+ </table> -->
 
