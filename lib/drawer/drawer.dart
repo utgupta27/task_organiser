@@ -55,7 +55,7 @@ class MyDrawer extends StatelessWidget {
               "Version",
               style: TextStyle(fontSize: 16),
             ),
-            subtitle: Text("0.1 (Alpha)"),
+            subtitle: Text("1.0 (Stable)"),
             // trailing: Icon(Icons.edit),
           )
         ],
