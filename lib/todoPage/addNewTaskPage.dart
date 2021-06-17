@@ -20,14 +20,14 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
   var subTitleController = TextEditingController();
   var dueDateController = TextEditingController();
 
-  DateTime _date = DateTime(2020, 11, 17);
+  DateTime _date = DateTime.now();
 
   void _selectDate() async {
     final DateTime? newDate = await showDatePicker(
       context: context,
       initialDate: _date,
       firstDate: DateTime(2017, 1),
-      lastDate: DateTime(2022, 7),
+      lastDate: DateTime(2030, 12),
       helpText: 'Select a date',
     );
     if (newDate != null) {

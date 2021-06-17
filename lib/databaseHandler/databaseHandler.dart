@@ -61,7 +61,7 @@ class DatabaseHandler {
   Future<List<Todo>> readAllTodos() async {
     final db = await instance.database;
 
-    final orderBy = '${TodoFields.date} ASC';
+    final orderBy = '${TodoFields.id} DESC';
     // final result =
     //     await db.rawQuery('SELECT * FROM $tableTodos ORDER BY $orderBy');
 

@@ -20,6 +20,16 @@ class ViewTask extends StatefulWidget {
   _ViewTaskState createState() => _ViewTaskState();
 }
 
+getDate() {
+  String d = ViewTask.date;
+  return d.substring(0, 11);
+}
+
+getTime() {
+  String t = ViewTask.date;
+  return t.substring(11, 19);
+}
+
 class _ViewTaskState extends State<ViewTask> {
   Color getColor() {
     if (ViewTask.priority == "High") {
@@ -93,9 +103,34 @@ class _ViewTaskState extends State<ViewTask> {
                       size: 35,
                     ),
                     title: Text(
-                      "Due: ${ViewTask.dueDate}",
+                      "${ViewTask.dueDate}",
                       style: TextStyle(fontSize: 23),
                     ),
+                    subtitle: Text('Due Date'),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.watch_later_outlined,
+                      color: Colors.blue,
+                      size: 35,
+                    ),
+                    title: Text(
+                      "${getTime()}",
+                      style: TextStyle(fontSize: 23),
+                    ),
+                    subtitle: Text('Date & Time'),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.date_range_outlined,
+                      color: Colors.blue,
+                      size: 35,
+                    ),
+                    title: Text(
+                      "${getDate()}",
+                      style: TextStyle(fontSize: 23),
+                    ),
+                    subtitle: Text('Date & Time'),
                   )
                 ],
               ),
