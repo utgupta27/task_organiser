@@ -113,7 +113,7 @@ class TodoPageState extends State<TodoPage> {
                               elevation: 4,
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.grey[100],
+                                    // color: Colors.grey[100],
                                     border: Border(
                                         left: BorderSide(
                                             width: 7.0,

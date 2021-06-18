@@ -107,8 +107,8 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               padding: const EdgeInsets.fromLTRB(8, 20, 20, 20),
               child: TextField(
                 keyboardType: TextInputType.multiline,
-                // autofocus: true,
-
+                autofocus: false,
+                autocorrect: true,
                 textInputAction: TextInputAction.newline,
                 maxLines: 3,
                 controller: subTitleController,

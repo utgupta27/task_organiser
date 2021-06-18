@@ -12,6 +12,9 @@ class TodoAndNotesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "To-Do & Notes App",
+      theme: ThemeData(brightness: Brightness.light),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      themeMode: ThemeMode.system,
       home: HomePage(),
       debugShowCheckedModeBanner: false,
     );
