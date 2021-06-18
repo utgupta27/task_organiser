@@ -13,7 +13,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
 
   var title;
   var subTitle;
-  var priority;
+  var priority = 'Normal';
   var dueDate;
 
   var titleController = TextEditingController();

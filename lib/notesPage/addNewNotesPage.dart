@@ -14,7 +14,7 @@ class _AddNewNotesPageState extends State<AddNewNotesPage> {
 
   var title;
   var subTitle;
-  var color;
+  var color = "Teal";
 
   var titleController = TextEditingController();
   var subTitleController = TextEditingController();
