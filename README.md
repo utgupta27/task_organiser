@@ -15,3 +15,16 @@ A Beautiful Application for organising To-Do Tasks, Notes and Reminders.
   </tr>
  </table>
 
+
+<table>
+  <tr>
+    <td>Todo Tasks</td>
+     <td>Notes</td>
+    <td>About</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/utgupta27/task_organiser/blob/master/res/screenshots/Screenshot_1623995420.png" width=270 height=480></td>
+    <td><img src="https://github.com/utgupta27/task_organiser/blob/master/res/screenshots/Screenshot_1623995424.png" width=270 height=480></td>
+    <td><img src="https://github.com/utgupta27/task_organiser/blob/master/res/screenshots/Screenshot_1623995409.png" width=270 height=480></td>
+  </tr>
+ </table>
