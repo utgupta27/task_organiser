@@ -1,18 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:task_organiser/authHandler/authenticationHandler.dart';
 import 'package:task_organiser/navigationBar/bottomNavigationBar.dart';
+import 'package:task_organiser/signin/signInScreen.dart';
 import 'package:task_organiser/todoPage/todoPage.dart';
 import 'package:task_organiser/notesPage/notesPage.dart';
 import 'package:task_organiser/reminderPage/reminderPage.dart';
 import 'package:task_organiser/drawer/drawer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required User user})
+      : _user = user,
+        super(key: key);
+  final User _user;
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  late User _user;
+  bool _isSigningOut = false;
+  @override
+  void initState() {
+    _user = widget._user;
+
+    super.initState();
+  }
+
+  Route _routeToSignInScreen() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => SignInScreen(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(-1.0, 0.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   int _currentIndex = 0;
   final List<Widget> _screens = [TodoPage(), NotesPage(), ReminderPage()];
 
@@ -28,6 +62,20 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Task Organiser"),
         backgroundColor: Colors.blue[800],
+        actions: [
+          IconButton(
+              onPressed: () async {
+                setState(() {
+                  _isSigningOut = true;
+                });
+                await Authentication.signOut(context: context);
+                setState(() {
+                  _isSigningOut = false;
+                });
+                Navigator.of(context).pushReplacement(_routeToSignInScreen());
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       drawer: MyDrawer(),
       body: _screens[_currentIndex],
