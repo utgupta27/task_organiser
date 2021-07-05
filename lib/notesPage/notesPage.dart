@@ -4,6 +4,7 @@ import 'package:task_organiser/dataModle/notesDataModle.dart';
 import 'package:task_organiser/notesPage/addNewNotesPage.dart';
 import 'package:task_organiser/notesPage/viewNotes.dart';
 import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
+import 'package:task_organiser/res/customColors.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
@@ -158,7 +159,7 @@ class _NotesPageState extends State<NotesPage> {
               )
               .then(onGoBack);
         },
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CustomColors.firebaseNavy,
         elevation: 10,
         child: Icon(
           Icons.note_add_outlined,

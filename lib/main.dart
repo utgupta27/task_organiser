@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
-// import 'package:task_organiser/homePage/homePage.dart';
 import 'package:task_organiser/signin/signInScreen.dart';
 
 void main(List<String> args) {
-  runApp(TodoAndNotesApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    TodoAndNotesApp(),
+  );
 }
 
-class TodoAndNotesApp extends StatelessWidget {
+class TodoAndNotesApp extends StatefulWidget {
   const TodoAndNotesApp({Key? key}) : super(key: key);
 
+  // static bool switchValue = false;
+
+  @override
+  TodoAndNotesAppState createState() => TodoAndNotesAppState();
+}
+
+class TodoAndNotesAppState extends State<TodoAndNotesApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

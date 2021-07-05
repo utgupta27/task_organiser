@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:task_organiser/authHandler/authenticationHandler.dart';
 import 'package:task_organiser/navigationBar/bottomNavigationBar.dart';
+import 'package:task_organiser/res/customColors.dart';
 import 'package:task_organiser/signin/signInScreen.dart';
 import 'package:task_organiser/todoPage/todoPage.dart';
 import 'package:task_organiser/notesPage/notesPage.dart';
 import 'package:task_organiser/reminderPage/reminderPage.dart';
 import 'package:task_organiser/drawer/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:task_organiser/widgets/appBarTitle.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required User user})
       : _user = user,
         super(key: key);
   final User _user;
-
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   late User _user;
   bool _isSigningOut = false;
+  static var data;
+
   @override
   void initState() {
     _user = widget._user;
-
+    setdata(_user.uid, _user.displayName, _user.email, _user.photoURL);
     super.initState();
+  }
+
+  setdata(uid, name, email, picUrl) {
+    data = [uid, name, email, picUrl];
   }
 
   Route _routeToSignInScreen() {
@@ -60,8 +67,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Task Organiser"),
-        backgroundColor: Colors.blue[800],
+        title: AppBarTitle(),
+        backgroundColor: CustomColors.firebaseNavy,
         actions: [
           IconButton(
               onPressed: () async {

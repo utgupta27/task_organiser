@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:task_organiser/res/customColors.dart';
 
 class BottomNavyBar extends StatelessWidget {
   BottomNavyBar({
@@ -159,7 +160,7 @@ class BottomNavyBarItem {
   BottomNavyBarItem({
     required this.icon,
     required this.title,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.blueGrey,
     this.textAlign,
     this.inactiveColor = Colors.grey,
   });

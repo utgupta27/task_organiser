@@ -9,24 +9,28 @@ class AppBarTitle extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Image.asset(
-          'assets/firebase_logo.png',
-          height: 20,
+          'assets/icon/task_organiser.png',
+          height: 33,
         ),
-        SizedBox(width: 8),
+        SizedBox(width: 15),
         Text(
-          'FlutterFire',
-          style: TextStyle(
-            color: CustomColors.firebaseYellow,
-            fontSize: 18,
-          ),
-        ),
-        Text(
-          ' Authentication',
-          style: TextStyle(
-            color: CustomColors.firebaseOrange,
-            fontSize: 18,
-          ),
-        ),
+          "Task Organiser",
+          style: TextStyle(fontSize: 25),
+        )
+        // Text(
+        //   'Task',
+        //   style: TextStyle(
+        //     color: CustomColors.firebaseYellow,
+        //     fontSize: 24,
+        //   ),
+        // ),
+        // Text(
+        //   ' Organiser',
+        //   style: TextStyle(
+        //     color: CustomColors.firebaseOrange,
+        //     fontSize: 24,
+        //   ),
+        // ),
       ],
     );
   }

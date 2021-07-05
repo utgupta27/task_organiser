@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_organiser/res/customColors.dart';
 import 'package:task_organiser/todoPage/addNewTaskPage.dart';
 import 'package:task_organiser/todoPage/viewTask.dart';
 import 'package:task_organiser/dataModle/todoDataModle.dart';
@@ -200,7 +201,7 @@ class TodoPageState extends State<TodoPage> {
         },
         child: Icon(Icons.add_task_rounded),
         elevation: 10,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CustomColors.firebaseNavy,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
