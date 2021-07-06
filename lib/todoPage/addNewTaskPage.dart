@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/todoPage/todoPage.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('todos')
+    .collection('items');
 
 class AddNewTaskPage extends StatefulWidget {
   const AddNewTaskPage({Key? key}) : super(key: key);
@@ -18,7 +25,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
 
   var titleController = TextEditingController();
   var subTitleController = TextEditingController();
-  var dueDateController = TextEditingController();
+  // var dueDateController = TextEditingController();
 
   DateTime _date = DateTime.now();
 
@@ -35,6 +42,18 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
         _date = newDate;
       });
     }
+  }
+
+  onButtonPressed() async {
+    final DocumentReference _userDocs = _userCollection.doc();
+    _userDocs.set({
+      'title': titleController.value.text,
+      'docID': _userDocs.id,
+      'subtitle': subTitleController.value.text,
+      'color': priority,
+      'date': DateTime.now(),
+      'dueDate': _date,
+    });
   }
 
   Color? getColor(value) {
@@ -64,9 +83,8 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               // handle the press
               title = titleController.value.text;
               subTitle = subTitleController.value.text;
-              dueDate = dueDateController.value.text;
-              newTaskData(
-                  title, subTitle, priority, _date.toString().substring(0, 10));
+              // dueDate = dueDateController.value.text;
+              onButtonPressed();
               setState(() {
                 super.setState(() {});
               });

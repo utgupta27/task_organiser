@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
-import "package:task_organiser/todoPage/editTodoPage.dart";
+import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
+import 'package:task_organiser/notesPage/viewNotes.dart';
+import 'package:task_organiser/todoPage/editTodoPage.dart';
+// import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
+// import "package:task_organiser/todoPage/editTodoPage.dart";
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('todos')
+    .collection('items');
 
 class ViewTask extends StatefulWidget {
   // const ViewTask({Key? key}) : super(key: key);
@@ -24,23 +35,10 @@ class ViewTask extends StatefulWidget {
   _ViewTaskState createState() => _ViewTaskState();
 }
 
-getDate() {
-  String d = ViewTask.date;
-  return d.substring(0, 11);
-}
-
-getTime() {
-  String t = ViewTask.date;
-  return t.substring(11, 19);
-}
-
 class _ViewTaskState extends State<ViewTask> {
-  onButtonPressed(index) async {
-    print('INDEX to be deleted: $index');
-    await DatabaseHandlerTodos.instance.delete(index);
-    setState(() {
-      super.setState(() {});
-    });
+  onButtonPressed(id) async {
+    DocumentReference _userDocs = _userCollection.doc(id.toString());
+    _userDocs.delete();
   }
 
   Color getColor() {
@@ -80,7 +78,7 @@ class _ViewTaskState extends State<ViewTask> {
               )),
           IconButton(
               onPressed: () {
-                onButtonPressed(int.parse(ViewTask.id.toString()));
+                onButtonPressed(ViewTask.id);
                 setState(() {
                   super.setState(() {});
                 });
@@ -151,7 +149,7 @@ class _ViewTaskState extends State<ViewTask> {
                       size: 35,
                     ),
                     title: Text(
-                      "${ViewTask.dueDate}",
+                      "${DateFormat('dd/MM/yyyy').format(DateTime.fromMicrosecondsSinceEpoch(ViewTask.dueDate.microsecondsSinceEpoch))}",
                       style: TextStyle(fontSize: 23),
                     ),
                     subtitle: Text('Due Date'),
@@ -163,10 +161,10 @@ class _ViewTaskState extends State<ViewTask> {
                       size: 35,
                     ),
                     title: Text(
-                      "${getTime()}",
+                      "${DateFormat('hh:mm a').format(DateTime.fromMicrosecondsSinceEpoch(ViewTask.date.microsecondsSinceEpoch))}",
                       style: TextStyle(fontSize: 23),
                     ),
-                    subtitle: Text('Date & Time'),
+                    subtitle: Text('Time When Added'),
                   ),
                   ListTile(
                     leading: Icon(
@@ -175,10 +173,10 @@ class _ViewTaskState extends State<ViewTask> {
                       size: 35,
                     ),
                     title: Text(
-                      "${getDate()}",
+                      "${DateFormat('dd/MM/yyyy').format(DateTime.fromMicrosecondsSinceEpoch(ViewTask.date.microsecondsSinceEpoch))}",
                       style: TextStyle(fontSize: 23),
                     ),
-                    subtitle: Text('Date & Time'),
+                    subtitle: Text('Date when Added'),
                   )
                 ],
               ),

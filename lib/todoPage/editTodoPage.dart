@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/dataModle/todoDataModle.dart';
-import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
+// import 'package:task_organiser/dataModle/todoDataModle.dart';
+// import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('todos')
+    .collection('items');
 
 class EditTodoPage extends StatefulWidget {
   const EditTodoPage({Key? key}) : super(key: key);
@@ -30,8 +38,8 @@ class EditTodoPageState extends State<EditTodoPage> {
       titleController.text = EditTodoPageState.title;
       subTitleController.text = EditTodoPageState.subTitle;
       dropdownValue = EditTodoPageState.priority;
-      _date = DateTime.parse(EditTodoPageState.dueDate);
-      date = DateTime.now().toLocal();
+      // _date = EditTodoPageState.dueDate;
+      // date = DateTime.now();
     });
   }
 
@@ -55,7 +63,7 @@ class EditTodoPageState extends State<EditTodoPage> {
     if (newDate != null) {
       setState(() {
         _date = newDate;
-        date = _date.toLocal();
+        date = _date;
       });
     }
   }
@@ -69,15 +77,16 @@ class EditTodoPageState extends State<EditTodoPage> {
       return Colors.green;
   }
 
-  onButtonPressed() async {
-    final newTodo = Todo(
-        id: id,
-        title: title.toString(),
-        subtitle: subTitle.toString(),
-        priority: priority.toString(),
-        dueDate: dueDate.toString(),
-        date: DateTime.now().toString());
-    await DatabaseHandlerTodos.instance.update(newTodo);
+  onButtonPressed(id) async {
+    final DocumentReference _userDocs = _userCollection.doc(id);
+    _userDocs.set({
+      'title': titleController.value.text,
+      'docID': _userDocs.id,
+      'subtitle': subTitleController.value.text,
+      'color': priority,
+      'date': DateTime.now(),
+      'dueDate': _date,
+    });
   }
 
   @override
@@ -102,7 +111,7 @@ class EditTodoPageState extends State<EditTodoPage> {
                 title = titleController.value.text;
                 subTitle = subTitleController.value.text;
               });
-              onButtonPressed();
+              onButtonPressed(EditTodoPageState.id);
               setState(() {
                 super.setState(() {});
               });
