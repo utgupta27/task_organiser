@@ -5,7 +5,6 @@ import 'package:task_organiser/res/customColors.dart';
 import 'package:task_organiser/signin/signInScreen.dart';
 import 'package:task_organiser/todoPage/todoPage.dart';
 import 'package:task_organiser/notesPage/notesPage.dart';
-import 'package:task_organiser/reminderPage/reminderPage.dart';
 import 'package:task_organiser/drawer/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:task_organiser/widgets/appBarTitle.dart';
@@ -103,12 +102,6 @@ class HomePageState extends State<HomePage> {
                 size: 30,
               ),
               title: Text("  My Notes", style: TextStyle(fontSize: 20))),
-          // BottomNavyBarItem(
-          //     icon: Icon(
-          //       Icons.alarm_on_outlined,
-          //       size: 30,
-          //     ),
-          //     title: Text("Reminders"))
         ],
         selectedIndex: _currentIndex,
         onItemSelected: onItemTapped,

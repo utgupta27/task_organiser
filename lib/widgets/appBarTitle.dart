@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/res/customColors.dart';
 
 class AppBarTitle extends StatelessWidget {
   @override
@@ -17,20 +16,6 @@ class AppBarTitle extends StatelessWidget {
           "Task Organiser",
           style: TextStyle(fontSize: 25),
         )
-        // Text(
-        //   'Task',
-        //   style: TextStyle(
-        //     color: CustomColors.firebaseYellow,
-        //     fontSize: 24,
-        //   ),
-        // ),
-        // Text(
-        //   ' Organiser',
-        //   style: TextStyle(
-        //     color: CustomColors.firebaseOrange,
-        //     fontSize: 24,
-        //   ),
-        // ),
       ],
     );
   }

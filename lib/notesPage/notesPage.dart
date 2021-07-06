@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
 import 'package:intl/intl.dart';
-// import 'package:task_organiser/dataModle/notesDataModle.dart';
 import 'package:task_organiser/notesPage/addNewNotesPage.dart';
 import 'package:task_organiser/notesPage/viewNotes.dart';
-// import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
 import 'package:task_organiser/res/customColors.dart';
 
 class NotesPage extends StatefulWidget {

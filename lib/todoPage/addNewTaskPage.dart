@@ -25,7 +25,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
 
   var titleController = TextEditingController();
   var subTitleController = TextEditingController();
-  // var dueDateController = TextEditingController();
 
   DateTime _date = DateTime.now();
 
@@ -83,7 +82,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
               // handle the press
               title = titleController.value.text;
               subTitle = subTitleController.value.text;
-              // dueDate = dueDateController.value.text;
               onButtonPressed();
               setState(() {
                 super.setState(() {});
@@ -99,7 +97,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        // color: Colors.deepOrange,
         child: ListView(
           children: <Widget>[
             Padding(
@@ -150,11 +147,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                   child: ListTile(
-                    // leading: Icon(
-                    //   Icons.priority_high_rounded,
-                    //   size: 35,
-                    //   color: Colors.red,
-                    // ),
                     title: Text(
                       "Select Task Priority",
                       style: TextStyle(
@@ -171,9 +163,6 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         isExpanded: true,
-
-                        // icon: const Icon(Icons.arrow_downward),
-                        // iconSize: 24,
                         elevation: 16,
                         style:
                             const TextStyle(color: Colors.blue, fontSize: 18),

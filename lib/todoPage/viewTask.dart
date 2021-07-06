@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
-import 'package:task_organiser/notesPage/viewNotes.dart';
 import 'package:task_organiser/todoPage/editTodoPage.dart';
-// import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
-// import "package:task_organiser/todoPage/editTodoPage.dart";
 
 final FirebaseFirestore _firebase = FirebaseFirestore.instance;
 final CollectionReference _userCollection = _firebase
@@ -14,7 +11,7 @@ final CollectionReference _userCollection = _firebase
     .collection('items');
 
 class ViewTask extends StatefulWidget {
-  // const ViewTask({Key? key}) : super(key: key);
+  const ViewTask({Key? key}) : super(key: key);
   static var id;
   static var title;
   static var subTitle;

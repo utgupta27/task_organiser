@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
-// import 'package:task_organiser/dataModle/notesDataModle.dart';
-// import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
 
 final FirebaseFirestore _firebase = FirebaseFirestore.instance;
 final CollectionReference _userCollection = _firebase

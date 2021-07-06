@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
-// import 'package:task_organiser/dataModle/todoDataModle.dart';
-// import 'package:task_organiser/databaseHandler/databaseHandlerTodos.dart';
 
 final FirebaseFirestore _firebase = FirebaseFirestore.instance;
 final CollectionReference _userCollection = _firebase
@@ -38,8 +36,6 @@ class EditTodoPageState extends State<EditTodoPage> {
       titleController.text = EditTodoPageState.title;
       subTitleController.text = EditTodoPageState.subTitle;
       dropdownValue = EditTodoPageState.priority;
-      // _date = EditTodoPageState.dueDate;
-      // date = DateTime.now();
     });
   }
 
@@ -105,8 +101,6 @@ class EditTodoPageState extends State<EditTodoPage> {
             ),
             tooltip: 'New Task',
             onPressed: () {
-              // initState();
-              // handle the press
               setState(() {
                 title = titleController.value.text;
                 subTitle = subTitleController.value.text;
@@ -127,7 +121,6 @@ class EditTodoPageState extends State<EditTodoPage> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        // color: Colors.deepOrange,
         child: ListView(
           children: <Widget>[
             Padding(
@@ -178,11 +171,6 @@ class EditTodoPageState extends State<EditTodoPage> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(50, 0, 50, 0),
                   child: ListTile(
-                    // leading: Icon(
-                    //   Icons.priority_high_rounded,
-                    //   size: 35,
-                    //   color: Colors.red,
-                    // ),
                     title: Text(
                       "Select Task Priority",
                       style: TextStyle(
@@ -199,9 +187,6 @@ class EditTodoPageState extends State<EditTodoPage> {
                       child: DropdownButton<String>(
                         value: dropdownValue,
                         isExpanded: true,
-
-                        // icon: const Icon(Icons.arrow_downward),
-                        // iconSize: 24,
                         elevation: 16,
                         style:
                             const TextStyle(color: Colors.blue, fontSize: 18),

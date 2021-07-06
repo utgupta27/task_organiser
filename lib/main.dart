@@ -13,8 +13,6 @@ void main(List<String> args) async {
 class TodoAndNotesApp extends StatefulWidget {
   const TodoAndNotesApp({Key? key}) : super(key: key);
 
-  // static bool switchValue = false;
-
   @override
   TodoAndNotesAppState createState() => TodoAndNotesAppState();
 }
