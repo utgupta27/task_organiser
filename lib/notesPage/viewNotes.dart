@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
+import 'package:intl/intl.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
 import 'package:task_organiser/notesPage/editNotesPage.dart';
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('notes')
+    .collection('items');
 
 class ViewNotes extends StatefulWidget {
   const ViewNotes({Key? key}) : super(key: key);
@@ -15,20 +23,11 @@ class ViewNotes extends StatefulWidget {
     title = atitle;
     subTitle = asubTitle;
     color = acolor;
-    date = adate.toString().substring(0, 10);
+    date = adate;
   }
 
   @override
   _ViewNotesState createState() => _ViewNotesState();
-}
-
-onButtonPressed(index) async {
-  print('INDEX to be deleted: $index');
-  print(ViewNotes.id);
-  await DatabaseHandlerNotes.instance.delete(index);
-  // setState(() {
-  //   super.setState(() {});
-  // });
 }
 
 class _ViewNotesState extends State<ViewNotes> {
@@ -50,6 +49,12 @@ class _ViewNotesState extends State<ViewNotes> {
     } else if (value == "Brown") {
       return Colors.brown[200];
     }
+  }
+
+  onButtonPressed(id) async {
+    print(id);
+    DocumentReference _userDocs = _userCollection.doc(id.toString());
+    _userDocs.delete();
   }
 
   @override
@@ -80,7 +85,7 @@ class _ViewNotesState extends State<ViewNotes> {
               )),
           IconButton(
               onPressed: () {
-                onButtonPressed(int.parse(ViewNotes.id.toString()));
+                onButtonPressed(ViewNotes.id);
                 setState(() {
                   super.setState(() {});
                 });
@@ -113,7 +118,8 @@ class _ViewNotesState extends State<ViewNotes> {
                 ),
               )),
             ),
-            Text("${ViewNotes.date}")
+            Text(
+                "${DateFormat('dd/MM').format(DateTime.fromMicrosecondsSinceEpoch(ViewNotes.date.microsecondsSinceEpoch))}")
           ],
         ),
       ),
