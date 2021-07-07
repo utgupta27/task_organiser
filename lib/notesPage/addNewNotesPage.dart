@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/dataModle/notesDataModle.dart';
-import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('notes')
+    .collection('items');
 
 class AddNewNotesPage extends StatefulWidget {
   const AddNewNotesPage({Key? key}) : super(key: key);
@@ -40,12 +46,14 @@ class _AddNewNotesPageState extends State<AddNewNotesPage> {
   }
 
   onButtonPressed() async {
-    final note = Note(
-        title: titleController.value.text,
-        subtitle: subTitleController.value.text,
-        color: color,
-        date: DateTime.now().toString());
-    await DatabaseHandlerNotes.instance.create(note);
+    final DocumentReference _userDocs = _userCollection.doc();
+    _userDocs.set({
+      'title': titleController.value.text,
+      'docID': _userDocs.id,
+      'subtitle': subTitleController.value.text,
+      'color': color,
+      'date': DateTime.now()
+    });
   }
 
   @override

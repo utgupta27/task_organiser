@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task_organiser/dataModle/notesDataModle.dart';
-import 'package:task_organiser/databaseHandler/databaseHandlerNotes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:task_organiser/homePage/homePage.dart';
+
+final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+final CollectionReference _userCollection = _firebase
+    .collection(HomePageState.data[0])
+    .doc('notes')
+    .collection('items');
 
 class EditNotesPage extends StatefulWidget {
   const EditNotesPage({Key? key}) : super(key: key);
@@ -29,7 +35,7 @@ class EditNotesPageState extends State<EditNotesPage> {
     titleController.text = EditNotesPageState.title;
     subTitleController.text = EditNotesPageState.subTitle;
     dropdownVal = EditNotesPageState.color;
-    date = DateTime.now().toString();
+    date = DateTime.now();
   }
 
   static sendData(aid, atitle, asubTitle, acolor, adate) {
@@ -37,7 +43,7 @@ class EditNotesPageState extends State<EditNotesPage> {
     title = atitle;
     subTitle = asubTitle;
     color = acolor;
-    date = adate.toString().substring(0, 10);
+    date = adate;
   }
 
   Color? getColor(value) {
@@ -61,13 +67,15 @@ class EditNotesPageState extends State<EditNotesPage> {
   }
 
   onButtonPressed() async {
-    final note = Note(
-        id: id,
-        title: titleController.value.text,
-        subtitle: subTitleController.value.text,
-        color: color,
-        date: DateTime.now().toString());
-    await DatabaseHandlerNotes.instance.update(note);
+    final DocumentReference _userDocs =
+        _userCollection.doc(EditNotesPageState.id);
+    _userDocs.set({
+      'title': titleController.value.text,
+      'docID': _userDocs.id,
+      'subtitle': subTitleController.value.text,
+      'color': color,
+      'date': DateTime.now()
+    });
   }
 
   @override

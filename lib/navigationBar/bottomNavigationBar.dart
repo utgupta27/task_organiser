@@ -159,7 +159,7 @@ class BottomNavyBarItem {
   BottomNavyBarItem({
     required this.icon,
     required this.title,
-    this.activeColor = Colors.blue,
+    this.activeColor = Colors.blueGrey,
     this.textAlign,
     this.inactiveColor = Colors.grey,
   });
