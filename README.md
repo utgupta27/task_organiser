@@ -1,11 +1,21 @@
 # Task Organiser
+![image](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
+![image](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+![image](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
+
+
+
 A Cross-Platform Real-Time Cloud Sync Application for organising To-Do Tasks, Notes and Reminders.
 Available for Android, Web and iOS, Support for native Desktop Application(like- Linux,Windows and Mac) is Comming soon...
 
 
-<pre>
-<a href="https://github.com/utgupta27/task_organiser/releases/download/2.1/Task_Organiser_v2.1.stable.apk" target="_blank">Download APK: Task Organiser v2.1</a>                                                     <a href="https://task-organiser-d08f8.web.app/" target="_blank">Open in Web: Task Organiser</a>
-</pre>
+
+<a href="https://github.com/utgupta27/task_organiser/releases/download/2.1/Task_Organiser_v2.1.stable.apk" target="_blank">![image](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)</a> <a href="https://task-organiser-d08f8.web.app/" target="_blank">![image](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)</a> <a href="https://task-organiser-d08f8.web.app/" target="_blank"> <a href="https://task-organiser-d08f8.web.app/" target="_blank">![image](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)</a></a> <a href="https://task-organiser-d08f8.web.app/" target="_blank">![image](https://img.shields.io/badge/Opera-FF1B2D?style=for-the-badge&logo=Opera&logoColor=white)</a>
+
+
+<!--     https://task-organiser-d08f8.web.app/ -->
+
+
 ## Features
   - Uses Firebase Authentication to Sign-In Via Google Account.
   - Uses FireBase Cloud to store Data.
