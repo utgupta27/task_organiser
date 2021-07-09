@@ -4,12 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
 import 'package:task_organiser/notesPage/editNotesPage.dart';
 
-final FirebaseFirestore _firebase = FirebaseFirestore.instance;
-final CollectionReference _userCollection = _firebase
-    .collection(HomePageState.data[0])
-    .doc('notes')
-    .collection('items');
-
 class ViewNotes extends StatefulWidget {
   const ViewNotes({Key? key}) : super(key: key);
   static var id;
@@ -31,6 +25,7 @@ class ViewNotes extends StatefulWidget {
 }
 
 class _ViewNotesState extends State<ViewNotes> {
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
   Color? getColor(value) {
     if (value == "Pink") {
       return Colors.pink[200];
@@ -52,6 +47,10 @@ class _ViewNotesState extends State<ViewNotes> {
   }
 
   onButtonPressed(id) async {
+    final CollectionReference _userCollection = _firebase
+        .collection(HomePageState.data[0])
+        .doc('notes')
+        .collection('items');
     print(id);
     DocumentReference _userDocs = _userCollection.doc(id.toString());
     _userDocs.delete();

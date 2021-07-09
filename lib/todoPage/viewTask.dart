@@ -4,12 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
 import 'package:task_organiser/todoPage/editTodoPage.dart';
 
-final FirebaseFirestore _firebase = FirebaseFirestore.instance;
-final CollectionReference _userCollection = _firebase
-    .collection(HomePageState.data[0])
-    .doc('todos')
-    .collection('items');
-
 class ViewTask extends StatefulWidget {
   const ViewTask({Key? key}) : super(key: key);
   static var id;
@@ -33,7 +27,13 @@ class ViewTask extends StatefulWidget {
 }
 
 class _ViewTaskState extends State<ViewTask> {
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
+
   onButtonPressed(id) async {
+    final CollectionReference _userCollection = _firebase
+        .collection(HomePageState.data[0])
+        .doc('todos')
+        .collection('items');
     DocumentReference _userDocs = _userCollection.doc(id.toString());
     _userDocs.delete();
   }

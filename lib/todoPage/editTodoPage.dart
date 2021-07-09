@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
 
-final FirebaseFirestore _firebase = FirebaseFirestore.instance;
-final CollectionReference _userCollection = _firebase
-    .collection(HomePageState.data[0])
-    .doc('todos')
-    .collection('items');
-
 class EditTodoPage extends StatefulWidget {
   const EditTodoPage({Key? key}) : super(key: key);
 
@@ -16,6 +10,7 @@ class EditTodoPage extends StatefulWidget {
 }
 
 class EditTodoPageState extends State<EditTodoPage> {
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
   static var dropdownValue = "Normal";
   static var id;
   static var title;
@@ -74,6 +69,10 @@ class EditTodoPageState extends State<EditTodoPage> {
   }
 
   onButtonPressed(id) async {
+    final CollectionReference _userCollection = _firebase
+        .collection(HomePageState.data[0])
+        .doc('todos')
+        .collection('items');
     final DocumentReference _userDocs = _userCollection.doc(id);
     _userDocs.set({
       'title': titleController.value.text,

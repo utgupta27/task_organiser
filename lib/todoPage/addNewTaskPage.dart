@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
 
-final FirebaseFirestore _firebase = FirebaseFirestore.instance;
-final CollectionReference _userCollection = _firebase
-    .collection(HomePageState.data[0])
-    .doc('todos')
-    .collection('items');
-
 class AddNewTaskPage extends StatefulWidget {
   const AddNewTaskPage({Key? key}) : super(key: key);
 
@@ -16,6 +10,7 @@ class AddNewTaskPage extends StatefulWidget {
 }
 
 class _AddNewTaskPageState extends State<AddNewTaskPage> {
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
   var dropdownValue = "Normal";
 
   var title;
@@ -44,6 +39,11 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
   }
 
   onButtonPressed() async {
+    final CollectionReference _userCollection = _firebase
+        .collection(HomePageState.data[0])
+        .doc('todos')
+        .collection('items');
+
     final DocumentReference _userDocs = _userCollection.doc();
     _userDocs.set({
       'title': titleController.value.text,

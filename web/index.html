@@ -27,9 +27,35 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- This script installs service_worker.js to provide PWA functionality to
-       application. For more information, see:
-       https://developers.google.com/web/fundamentals/primers/service-workers -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyAcJADAtDiUgAhPX6pf_C9QbD6mxOmJqWA",
+    authDomain: "task-organiser-d08f8.firebaseapp.com",
+    projectId: "task-organiser-d08f8",
+    storageBucket: "task-organiser-d08f8.appspot.com",
+    messagingSenderId: "1094205788174",
+    appId: "1:1094205788174:web:7b7a672d1a9077d891ec5f",
+    measurementId: "G-Z7ZBZ3YT3Q"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
   <script>
     var serviceWorkerVersion = null;
     var scriptLoaded = false;

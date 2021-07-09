@@ -7,12 +7,6 @@ import 'package:task_organiser/res/customColors.dart';
 import 'package:task_organiser/todoPage/addNewTaskPage.dart';
 import 'package:task_organiser/todoPage/viewTask.dart';
 
-final FirebaseFirestore _firebase = FirebaseFirestore.instance;
-final CollectionReference _userCollection = _firebase
-    .collection(HomePageState.data[0])
-    .doc('todos')
-    .collection('items');
-
 class TodoPage extends StatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
 
@@ -24,6 +18,7 @@ class TodoPage extends StatefulWidget {
 }
 
 class TodoPageState extends State<TodoPage> {
+  final FirebaseFirestore _firebase = FirebaseFirestore.instance;
   Color getColor(var color) {
     if (color == "High") {
       return Colors.red;
@@ -42,6 +37,10 @@ class TodoPageState extends State<TodoPage> {
   }
 
   onButtonPressed(id) async {
+    final CollectionReference _userCollection = _firebase
+        .collection(HomePageState.data[0])
+        .doc('todos')
+        .collection('items');
     DocumentReference _userDocs = _userCollection.doc(id.toString());
     _userDocs.delete();
   }

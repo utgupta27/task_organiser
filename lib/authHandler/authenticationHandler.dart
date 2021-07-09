@@ -9,6 +9,7 @@ class Authentication {
   static Future<FirebaseApp> initializeFirebase({
     required BuildContext context,
   }) async {
+    WidgetsFlutterBinding.ensureInitialized();
     FirebaseApp firebaseApp = await Firebase.initializeApp();
 
     User? user = FirebaseAuth.instance.currentUser;
