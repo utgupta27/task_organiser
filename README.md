@@ -2,6 +2,21 @@
 A Cross-Platform Real-Time Cloud Sync Application for organising To-Do Tasks, Notes and Reminders.
 Available for Android, Web and iOS, Support for native Desktop Application(like- Linux,Windows and Mac) is Comming soon...
 
+
+<pre>
+<a href="https://github.com/utgupta27/task_organiser/releases/download/2.1/Task_Organiser_v2.1.stable.apk" target="_blank">Download APK: Task Organiser v2.1</a>                                                     <a href="https://task-organiser-d08f8.web.app/" target="_blank">Open in Web: Task Organiser</a>
+</pre>
+## Features
+  - Uses Firebase Authentication to Sign-In Via Google Account.
+  - Uses FireBase Cloud to store Data.
+  - Realtime Data Sync across different platform and devices.
+  - Automatic Signin when the Application Restarts.
+  - System Wide Dark Theme Support.
+  - Create, Update and Delete your Tasks And Notes.
+  - Organise Your Tasks on the basis of their Priority Level.
+  - Option to Manually Change the color of Your Notes.
+  
+
 ## SnapShots
 <table>
   <tr>
