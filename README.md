@@ -1,4 +1,7 @@
-# Task Organiser
+
+
+# ![favicon-32x32](https://user-images.githubusercontent.com/68506823/125042154-28053900-e0b7-11eb-9e85-311caf8d2895.png) Task Organiser
+
 ![image](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![image](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
 ![image](https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black)
