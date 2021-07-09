@@ -1,5 +1,6 @@
-# task-organiser
-A Beautiful Application for organising To-Do Tasks, Notes and Reminders.
+# Task Organiser
+A Cross-Platform Real-Time Cloud Sync Application for organising To-Do Tasks, Notes and Reminders.
+Available for Android, Web and iOS, Support for native Desktop Application(like- Linux,Windows and Mac) is Comming soon...
 
 ## SnapShots
 <table>
