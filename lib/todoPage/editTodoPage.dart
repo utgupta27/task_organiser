@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
+import 'package:task_organiser/res/customColors.dart';
 
 class EditTodoPage extends StatefulWidget {
   const EditTodoPage({Key? key}) : super(key: key);
@@ -90,7 +91,7 @@ class EditTodoPageState extends State<EditTodoPage> {
       appBar: AppBar(
         title: Text("Edit Task"),
         centerTitle: true,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CustomColors.firebaseNavy,
         actions: <Widget>[
           IconButton(
             icon: const Icon(

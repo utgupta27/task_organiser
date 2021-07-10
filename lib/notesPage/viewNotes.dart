@@ -111,9 +111,12 @@ class _ViewNotesState extends State<ViewNotes> {
                   // color: getColor(ViewNotes.color),
                   child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  "${ViewNotes.subTitle}",
-                  style: TextStyle(fontSize: 25),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Text(
+                    "${ViewNotes.subTitle}",
+                    style: TextStyle(fontSize: 25),
+                  ),
                 ),
               )),
             ),

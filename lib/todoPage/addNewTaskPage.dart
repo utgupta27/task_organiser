@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
+import 'package:task_organiser/res/customColors.dart';
 
 class AddNewTaskPage extends StatefulWidget {
   const AddNewTaskPage({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class _AddNewTaskPageState extends State<AddNewTaskPage> {
       appBar: AppBar(
         title: Text("Add New Task"),
         centerTitle: true,
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CustomColors.firebaseNavy,
         actions: <Widget>[
           IconButton(
             icon: const Icon(

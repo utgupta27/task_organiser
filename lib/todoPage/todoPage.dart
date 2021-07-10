@@ -105,8 +105,10 @@ class TodoPageState extends State<TodoPage> {
                                 document.data()['title'],
                                 style: TextStyle(fontWeight: FontWeight.w900),
                               ),
-                              subtitle: Text(
-                                  getSubtitle(document.data()['subtitle'])),
+                              subtitle: SizedBox(
+                                child: Text(
+                                    getSubtitle(document.data()['subtitle'])),
+                              ),
                               trailing: Container(
                                 child: ElevatedButton(
                                   child: Icon(Icons.done_outline_rounded),

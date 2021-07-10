@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:task_organiser/homePage/homePage.dart';
+import 'package:task_organiser/res/customColors.dart';
 
 class EditNotesPage extends StatefulWidget {
   const EditNotesPage({Key? key}) : super(key: key);
@@ -83,7 +84,7 @@ class EditNotesPageState extends State<EditNotesPage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(child: Text("Add New Note")),
-        backgroundColor: Colors.blue[800],
+        backgroundColor: CustomColors.firebaseNavy,
         actions: <Widget>[
           IconButton(
               onPressed: () {
