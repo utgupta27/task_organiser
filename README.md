@@ -18,7 +18,7 @@ Available for Android, Web and iOS, Support for native Desktop Application(like-
 
 
 ## Try Now
-<a href="https://github.com/utgupta27/task_organiser/releases/download/2.1/Task_orgaiser_V2.2.apk" target="_blank">![image](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)</a> <a href="https://task-organiser-d08f8.web.app/" target="_blank">![image](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)</a>
+<a href="https://github.com/utgupta27/task_organiser/releases/download/2.2/task_organiser_v2.2.apk" target="_blank">![image](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)</a> <a href="https://task-organiser-d08f8.web.app/" target="_blank">![image](https://img.shields.io/badge/Google_chrome-4285F4?style=for-the-badge&logo=Google-chrome&logoColor=white)</a>
 
 
 <!--     https://task-organiser-d08f8.web.app/ -->
