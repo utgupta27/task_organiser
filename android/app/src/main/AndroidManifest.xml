@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.task_organiser">
    <application
-        android:label="task_organiser"
+        android:label="Task Organiser"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
