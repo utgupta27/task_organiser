@@ -1,11 +1,11 @@
 {
-    "name": "task_organiser",
-    "short_name": "task_organiser",
+    "name": "Task Organiser",
+    "short_name": "Task Organiser",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A Cross-Platform Real-Time Cloud Sync Application for organising To-Do Tasks, Notes and Reminders. Available for Android, Web and iOS.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
